@@ -1,0 +1,32 @@
+# Create Pytho script organize some of  sales data.
+
+#list of pizza types and prices
+toppings=["pepperoni", "pineapple", "cheese", "sausage", "olives", "anchovies", "mushrooms"]
+prices=[2, 6, 1, 3, 2, 7, 2]
+
+# calculates number of pizza toppings
+num_pizzas=len(toppings)
+
+#prints message
+print("We sell " +str(num_pizzas)+ " differnt kinds of pizza!")
+
+#list of pizza types with prices
+pizzas=list(zip(prices,toppings))
+
+print(pizzas)
+
+#sort pizzas list by chepaest price
+pizzas.sort()
+
+#identify cheapest and most expesive pizza
+cheapest_Pizza=pizzas[0]
+priciest_pizza=pizzas[-1]
+
+#identify 3 cheapest pizzas
+three_cheapest=pizzas[:3]
+print(three_cheapest)
+
+
+#calculates number of 2 dollar slices
+num_two_dollar_slices=prices.count(2)
+print(num_two_dollar_slices)
