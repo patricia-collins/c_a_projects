@@ -1,10 +1,11 @@
 #program that calculates cheapest shipping method using Sals Shippers
 
-premium_shipping_cost=125
+premium_shipping=125
 
 #calculate the cost of ground shipping
-flat_rate=20
+
 def cost_ground_shipping(weight):
+  flat_rate=20
   if weight <=2:
     return (1.50*weight)+flat_rate
   if weight >2 and weight <=6:
@@ -15,11 +16,12 @@ def cost_ground_shipping(weight):
     return (4.75*weight)+flat_rate
   
 #test function
-print(cost_ground_shipping(8.4))
+print(cost_ground_shipping(4.8))
 
 #calculate the cost of drone shipping
-flat_rate=0
+
 def cost_drone_shipping(weight):
+  flat_rate=0
   if weight <=2:
     return (4.50*weight)+flat_rate
   if weight >2 and weight <=6:
@@ -34,10 +36,13 @@ print(cost_drone_shipping(1.5))
 
 #determine cheapest shipping method
 def cheapest_shipping_method(weight):
-  if cost_ground_shipping < cost_drone_shipping or cost_ground_shipping < premium_shipping:
-    return ground_shipping
-  elif cost_drone_shipping>premium_shipping:
-    return drone_shipping
-  else:
-    return premium_shipping
+  if cost_ground_shipping(weight) < cost_drone_shipping(weight)  and cost_ground_shipping(weight) < premium_shipping:
+    return "Ground shipping is the cheapest shipping method. \nThe cost of shipping a package of " +str(weight) +" pounds is $" + str(cost_ground_shipping(weight))+"."
+  elif cost_drone_shipping(weight)<premium_shipping:
+    return "Drone shipping is the cheapest shipping method. \nThe cost of shipping a package of " +str(weight) +" pounds is $" + str(cost_drone_shipping(weight))+"."
  
+  else:
+    return "Premium shipping is the cheapest shipping method. \nThe cost of shipping a package of " +str(weight) +" pounds is $" + str(premium_shipping)+"."
+  
+print(cheapest_shipping_method(4.8))
+print(cheapest_shipping_method(41.5))                    
