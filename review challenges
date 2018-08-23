@@ -38,7 +38,7 @@ def more_than_n(lst,item,n):
 #Uncomment the line below when your function is done
 print(more_than_n([2, 4, 6, 2, 3, 2, 1, 2], 2, 3))
 
-###NUMBER4
+###NUMBER 4
 #Create a function named more_frequent_item that has three parameters named lst, item1, and item2.
 #Return either item1 or item2 depending on which item appears more often in lst.
 #If the two items appear the same number of times, return item1.
@@ -52,7 +52,7 @@ def more_frequent_item(lst,item1,item2):
 #Uncomment the line below when your function is done
 print(more_frequent_item([2, 3, 3, 2, 3, 2, 3, 2, 3], 2, 3))
 
-###NUMBER5
+###NUMBER 5
 #Create a function called middle_element that has one parameter named lst.
 #If there are an odd number of elements in lst, the function should return the middle element. 
 #If there are an even number of elements, the function should return the average of the middle two elements.
@@ -77,3 +77,71 @@ def middle_element(lst):
   else:
     return (lst[int(len(lst)/2)]+lst[int((len(lst)/2))-1])/2
 print(middle_element([5, 2, -10, -4, 4, 5,8]))
+
+Append Sum
+append_sum(lst)
+
+##NUMBER 6
+#Write a function named append_sum that has one parameter named lst.
+#The function should add the last two elements of lst together and append the result to lst. It should do this process three times and then return lst.
+
+# CA solution
+def append_sum_theirs(lst):
+  lst.append(lst[-1] + lst[-2])
+  lst.append(lst[-1] + lst[-2])
+  lst.append(lst[-1] + lst[-2])
+  return lst
+
+#mine
+def append_sum_mine(lst2):
+  sum=lst2[-1]+lst2[-2]
+  lst2.append(sum)
+  sum=lst2[-1]+lst2[-2]
+  lst2.append(sum)
+  sum=lst2[-1]+lst2[-2]
+  lst2.append(sum)
+  return lst2
+
+print(append_sum_theirs([1, 1, 2]))
+print(append_sum_mine([1, 1, 2]))
+
+###NUMBER 7
+#Write a function named combine_sort that has two parameters named lst1 and lst2.
+#The function should combine these two lists into one new list and sort the result. Return the new sorted list.
+
+def combine_sort(lst1,lst2):
+  newlist=lst1+lst2
+  return sorted(newlist)
+
+#Uncomment the line below when your function is done
+print(combine_sort([4, 10, 2, 5], [-10, 2, 5, 10]))
+
+def combined_sort(lst1,lst2):
+  newlist=lst1+lst2
+  newlist.sort()
+  print (newlist)
+combined_sort([4, 10, 2, 5], [-10, 2, 5, 10])
+
+Append Size
+append_size(lst)
+
+
+###NUMBER 8
+#Create a function called append_size that has one parameter named lst.
+#The function should add all of the numbers between 1 and the size of lst (inclusive) to the end of lst. 
+#The function should then return this new list.
+
+
+#their solution  but does not use .appenddef append_size(lst):
+  to_append = list(range(1, len(lst)+1))
+  lst = lst + to_append
+  return lst
+ 
+print(append_size([23, 42, 108]))
+
+#my solution, .extend instead of append as .append returns lst with my_range inside[]
+def append_size(lst):
+  my_range=list(range(1,(len(lst)+1)))
+  lst.extend(my_range)
+  return lst
+
