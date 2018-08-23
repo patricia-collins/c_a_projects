@@ -51,3 +51,29 @@ def more_frequent_item(lst,item1,item2):
 
 #Uncomment the line below when your function is done
 print(more_frequent_item([2, 3, 3, 2, 3, 2, 3, 2, 3], 2, 3))
+
+###NUMBER5
+#Create a function called middle_element that has one parameter named lst.
+#If there are an odd number of elements in lst, the function should return the middle element. 
+#If there are an even number of elements, the function should return the average of the middle two elements.
+
+#nicer CA solution 
+#forgor int rounds up to the nearest whole number
+def middle_element(lst):
+  if len(lst) % 2 == 0:
+    sum = lst[int(len(lst)/2)] + lst[int(len(lst)/2) - 1]
+    return sum / 2
+  else:
+    return lst[int(len(lst)/2)]
+
+#Uncomment the line below when your function is done
+print(middle_element([5, 2, -10, -4, 4, 5,8]))
+
+#my version
+def middle_element(lst):
+  if len(lst)%2!=0:
+    middle_index=int((len(lst)+1)/2)
+    return lst[middle_index-1]
+  else:
+    return (lst[int(len(lst)/2)]+lst[int((len(lst)/2))-1])/2
+print(middle_element([5, 2, -10, -4, 4, 5,8]))
