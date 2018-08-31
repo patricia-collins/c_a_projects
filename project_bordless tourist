@@ -1,1 +1,101 @@
+#test traveler data
+test_traveler=['Erin Wilkes', 'Shanghai, China', ['historical site', 'art']]
+
+# list of destinations
+destinations=["Paris, France","Shanghai, China","Los Angeles, USA" ,"So Paulo, Brazil", "Cairo, Egypt"]
+
+#function to add attraction to attraction list based on destination index
+
+for i in destinations:
+  attractions=[[] for i in destinations]
+
+def add_attraction (destination, attraction):
+  try:
+    destination_index= get_destination_index(destination)
+    attractions_for_destinations= attractions[destination_index].append(attraction)
+  except ValueError:
+    print("error caught")
+
+#"Created attractions  to test functionality for adding new attractions"
+add_attraction("Los Angeles, USA", ['Venice Beach', ['beach']]) 
+
+add_attraction("Paris, France", ["the Louvre", ["art", "museum"]])
+add_attraction("Paris, France", ["banter palace", ["art", "museum"]])
+add_attraction("Paris, France", ["trish palace", ["books", "museum"]])
+add_attraction("Paris, France", ["Arc de Triomphe", ["historical site", "monument"]])
+add_attraction("Shanghai, China", ["Yu Garden", ["garden", "historcical site"]])
+add_attraction("Shanghai, China", ["Yuz Museum", ["art", "museum"]])
+add_attraction("Shanghai, China", ["Oriental Pearl Tower", ["skyscraper", "viewing deck"]])
+add_attraction("Los Angeles, USA", ["LACMA", ["art", "museum"]])
+add_attraction("So Paulo, Brazil", ["So Paulo Zoo", ["zoo"]])
+add_attraction("So Paulo, Brazil", ["Ptio do Colgio", ["historical site"]])
+add_attraction("Paris, France", ["Pyramids of Giza", ["monument", "historical site"]])
+add_attraction("Cairo, Egypt", ["Egyptian Museum", ["museum"]])
+###function to identify each location based on its index in destinations list.
+def get_destination_index(destination):
+  destination_index=destinations.index(destination)
+  return destination_index
+
+#test function
+print (get_destination_index("Los Angeles, USA"))
+
+#function to identify travler destination index.                     
+def get_traveler_location(traveler):
+  traveler_destination=traveler[1]
+  traveler_destination_index=get_destination_index(traveler_destination)
+  return traveler_destination_index
+
+#test function with test traveler data
+test_destination_index= get_traveler_location(test_traveler)
+print(test_destination_index)
+
+# function to match traveler interests with the possible locations in a city.
+def find_attractions(destination,interests):
+  destination_index=get_destination_index(destination)
+  attractions_in_city=attractions[destination_index]
+  #print("attractions in the city:", (attractions_in_city))
+  attraction_with_interest=[]
+    
+  for attraction in attractions_in_city:
+    attraction_tags=attraction[1]
+    #print ("attraction tags:",(attraction_tags))
+    for interest in interests:
+      if interest in attraction_tags:
+        attraction_with_interest.append(attraction[0])
+  return attraction_with_interest
+print(find_attractions("Los Angeles, USA",['art','beach']))   
+
+def get_attractions_for_traveler(traveler):
+  name=traveler[0]
+  destination= traveler[1]
+  interests=traveler[2]
+  traveler_attractions=find_attractions(destination,interests)
+    
+  interest_string= "Hi "+ name+ ", we think you'll like these places around "+destination+ ": "
+  print(traveler_attractions)
+    
+  for attraction in range(len(traveler_attractions)):
+     if traveler_attractions[attraction].startswith("the"):
+        pass
+     else:
+         traveler_attractions[attraction]="the "+traveler_attractions[attraction]
+ 
+    
+  for attraction in range(len(traveler_attractions)):
+    if traveler_attractions[-1]==traveler_attractions[attraction]:
+                interest_string+=" and "+traveler_attractions[attraction]+"."
+    elif traveler_attractions[-2]==traveler_attractions[attraction]:
+       interest_string+=traveler_attractions[attraction]
+    else:
+       interest_string+=traveler_attractions[attraction]+", "
+  
+  
+  return interest_string
+                
+  
+  
+tester=get_attractions_for_traveler(['Dereck Smill', 'Paris, France', ['art','books','monument']])
+print(tester)
+   
+
 
